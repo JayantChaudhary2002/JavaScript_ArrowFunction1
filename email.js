@@ -1,11 +1,14 @@
 // Function to validate email address
 const validateEmail = (email) => {
-    return /^abc(\.\w+)?@bridgelabz\.co(\.\w{2})?$/.test(email); // Ensures '@' is present, 'bridgelabz' is mandatory, '.' follows 'bridgelabz', and 'co' is mandatory
+    return /^abc([._+\-]\w+)?@bridgelabz\.co(\.\w{2})?$/.test(email); // Ensures '@' is present, 'bridgelabz' is mandatory, '.' follows 'bridgelabz', 'co' is mandatory, and optional part supports allowed special characters
 };
 
 // Example usage of email validation
 console.log(validateEmail("abc@bridgelabz.co")); // true
 console.log(validateEmail("abc.xyz@bridgelabz.co.in")); // true
+console.log(validateEmail("abc_xyz@bridgelabz.co.in")); // true 
+console.log(validateEmail("abc+xyz@bridgelabz.co.in")); // true 
+console.log(validateEmail("abc-xyz@bridgelabz.co.in")); // true 
 console.log(validateEmail("abc@bridgelabz.com")); // false 
 console.log(validateEmail("xyz@bridgelabz.co.in")); // false 
 console.log(validateEmail("abc@xyz.co.in")); // false
